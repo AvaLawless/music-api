@@ -9,19 +9,7 @@ This final project creates a dashboard based on a data set of Billboard's Hot 10
 In this case study, I wanted to create a website with an HTML dashboard like we did for the first assignment about NYC data. To do this with strategies learned in class, I used Flask, Pandas, and an app.py file to create the backend of the website. Flask API is used to create the website with Python code. It runs an API using HTTP requests.
 
 #### Architecture Diagram:
-┌─────────────┐         ┌─────────────────┐         ┌──────────────┐
-│   Client    │────────>│   Flask API     │────────>│  Pandas DF   │
-│  (Browser)  │  GET    │  (app.py)       │ Query   │  (in-memory) │
-└─────────────┘         └─────────────────┘         └──────────────┘
-                                │                           │
-                                │     .describe()           │
-                                │     .groupby()            │
-                                │     .nlargest()           │
-                                │<──────────────────────────┘
-                         ┌──────▼───────┐
-                         │   CSV Data   │
-                         │  (Billboard) │
-                         └──────────────┘
+View assets folder
 
 #### Data/Models/Services
 Data: Top 100 Songs of 2024 - Billboard Hot 100
@@ -101,5 +89,41 @@ Tradeoffs: Flask is good for a small web project like this, but it may not be th
 
 Security/Privacy: This project uses public data.
 
-Ops considerations: 
+Ops: Logging: Flask default logging to console
+
+Metrics: Can track request counts via Flask middleware (not implemented)
+
+Scaling: Single-instance sufficient for this data size
+
+Limitations:
+
+Data loaded once at startup (no refresh without restart)
+
+In-memory only (no persistence)
+
+Single-threaded (fine for <1000 requests/sec)
+
+### 5) Results and Evaluation
+
+View assets folder for screenshot
+
+Summary Statistics Example:
+
+Total views across all 100 songs: 17+ billion
+
+Average views per song: 178 million
+
+Most viewed: "Calm Down" by Rema & Selena Gomez (1 billion+ views)
+
+100 unique artists/channels
+
+### 6) What's Next
+
+This code could be applied to other CSV files of music data or other media, such as TV shows or movies, as described earlier. Or, just using this data, there could be more features added to the website, such as top songs per month over the course of the year. 
+
+### 7) Links
+
+**GitHub Repo:** github.com/AvaLawless/music-api
+
+
 
